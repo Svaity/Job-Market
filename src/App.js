@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
 import useFetchJobs from './useFetchJobs'
 import { Container } from 'react-bootstrap'
-import Job from './Job'
-import JobsPagination from './JobsPagination';
-import SearchForm from './SearchForm';
+import Job from './Components/Jobs/Job'
+import JobsPagination from './Components/Jobs/JobsPagination';
+import SearchForm from './Components/Search/SearchForm';
+import Navbar from './Components/Navbar/Navbar'
+import TestJob from './Components/Jobs/TestJob'
+// asdfasd
+import './index.css'
+import { Grid } from "@material-ui/core";
+import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
+
 
 function App() {
+
   const [params, setParams] = useState({})
   const [page, setPage] = useState(1)
   const { jobs, loading, error, hasNextPage } = useFetchJobs(params, page)
@@ -19,18 +27,54 @@ function App() {
     })
   }
 
+ 
+
   return (
+    <div>
+      <div className="Hero">
+
+        <Container>
+        <div className="HeroGroup">
+        <Navbar/>
+        </div>
+        <SearchForm params={params} onParamChange={handleParamChange} />
+        </Container>
+      </div>
     <Container className="my-4">
-      <h1 className="text-3xl font-bold p-3">GitHub Jobs</h1>
-      <SearchForm params={params} onParamChange={handleParamChange} />
+
+
       <JobsPagination page={page} setPage={setPage} hasNextPage={hasNextPage} />
-      {loading && <h1>Loading...</h1>}
-      {error && <h1>Error. Try Refreshing.</h1>}
+
+      {/* Loading */}
+      {/* <Grid container spacing={4}>
+        <TestJob/>
+        <TestJob/>
+        <TestJob/>
+        </Grid> */}
+
+
+
+      {loading &&     <Segment>
+      <Dimmer active inverted>
+        <Loader size='large'>Loading</Loader>
+      </Dimmer>
+
+      <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+    </Segment>}
+      {error && <h3>Error. Too Many Request to the API.</h3>}
+      <Grid container spacing={4}>
       {jobs.map(job => {
         return <Job key={job.id} job={job} />
       })}
+        </Grid>
+      
+      <div className="card-deck">
+        <div>
       <JobsPagination page={page} setPage={setPage} hasNextPage={hasNextPage} />
+      </div>
+      </div>
     </Container>
+    </div>
   )
 }
 

@@ -1,0 +1,19 @@
+.header {
+  /* padding: 5px; */
+  display: flex;
+  align-items: center;
+  /* border-bottom: 1px solid lightgray; */
+}
+
+.headerLeft {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  padding-left: 20px;
+}
+
+.headerRight {
+  display: flex;
+  justify-content: space-between;
+  min-width: 100px;
+}

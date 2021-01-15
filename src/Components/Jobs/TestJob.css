@@ -1,0 +1,7 @@
+.darkmode--activated .logo {
+  mix-blend-mode: difference;
+}
+
+.darkmode--activated .change {
+  background-color: aqua;
+}
