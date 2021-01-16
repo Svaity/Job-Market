@@ -3,6 +3,7 @@ import Brightness4TwoToneIcon from '@material-ui/icons/Brightness4TwoTone';
 import { IconButton } from '@material-ui/core';
 import './Navbar.css'
 import Darkmode from 'darkmode-js';
+import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 
 
 const options = {
@@ -20,8 +21,6 @@ const options = {
   }
   
   
-  
-
   const clicker = () => {
     const darkmode = new Darkmode(options);  
     darkmode.toggle();}
@@ -30,10 +29,15 @@ const options = {
 function Navbar() {
     return (
         <div className = "header">
-
             <div className="headerLeft"><h3>Github Jobs</h3></div>
             <div className = "headerRight">
+                
+                <IconButton edge="false">
+                <EmojiPeopleIcon/>
+                </IconButton>
+            
             <IconButton color="white" onClick={clicker}>
+            
             <Brightness4TwoToneIcon/>
             </IconButton>
             </div>

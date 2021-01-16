@@ -10,10 +10,12 @@ import TestJob from './Components/Jobs/TestJob'
 import './index.css'
 import { Grid } from "@material-ui/core";
 import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
-
+import Loc from './getLocation'
 
 function App() {
 
+  
+  
   const [params, setParams] = useState({})
   const [page, setPage] = useState(1)
   const { jobs, loading, error, hasNextPage } = useFetchJobs(params, page)
@@ -27,7 +29,7 @@ function App() {
     })
   }
 
- 
+
 
   return (
     <div>
@@ -43,15 +45,12 @@ function App() {
     <Container className="my-4">
 
 
-      <JobsPagination page={page} setPage={setPage} hasNextPage={hasNextPage} />
-
       {/* Loading */}
       {/* <Grid container spacing={4}>
         <TestJob/>
         <TestJob/>
         <TestJob/>
         </Grid> */}
-
 
 
       {loading &&     <Segment>
@@ -69,7 +68,7 @@ function App() {
         </Grid>
       
       <div className="card-deck">
-        <div>
+        <div className="mt-3">
       <JobsPagination page={page} setPage={setPage} hasNextPage={hasNextPage} />
       </div>
       </div>

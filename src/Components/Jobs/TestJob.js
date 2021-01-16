@@ -19,7 +19,7 @@ function TestJob() {
 const [open, setOpen] = useState(false)
     return (
         <Grid item xs={12} sm={6} md={4}>
-            <Card onClick={setOpen}>
+             <Card onClick={() => setOpen(prevOpen => !prevOpen)}>
       <CardHeader
         avatar={<Avatar src={company_logo} />}
         action={
@@ -40,26 +40,34 @@ const [open, setOpen] = useState(false)
       </CardActions>
     </Card>
 
-    <Dialog open={open} maxWidth="md">
-    <Container>
+
+    <Dialog open={open} maxWidth="md"  style={{backgroundColor: 'transparent'}}  PaperProps={{
+    style: {
+      backgroundColor: 'pink',
+      boxShadow: 'none',
+    }}}>
             <DialogTitle>
               
-                <div style={{ display: 'flex' }}>
+                <div style={{ display: 'flex' }} >
                     <Typography variant="h6" component="div" style={{ flexGrow: 1 }}>
-                        Title
+                      <div display="d-flex">
+                    {/* {job.title}-<span>{job.company}</span> */}
+                    </div>
                     </Typography>
                     <Button
-                        color="secondary"
+                        variant="secondary"
                         onClick={()=>{setOpen(false)}}>
-                        <CloseIcon />
+                        Apply
                     </Button>
                 </div>
             </DialogTitle>
             <DialogContent dividers>
-                {description}
+            <div className="mt-4">
+            <ReactMarkdown source={description} />
+          </div>
             </DialogContent>
-            </Container>
-        </Dialog>
+            
+</Dialog>
 
 
 <div><Button

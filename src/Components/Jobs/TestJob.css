@@ -1,7 +1,28 @@
 .darkmode--activated .logo {
   mix-blend-mode: difference;
 }
+.customModal {
+  background-color: black;
+  color: white;
+}
+.modal {
+  background-color: green;
+}
 
-.darkmode--activated .change {
-  background-color: aqua;
+.modal-content {
+  background-color: #331a00;
+  color: #20bd4f;
+}
+
+.modal-content h5 {
+  color: #ffcc00;
+}
+
+.close {
+  color: #cf3834;
+}
+
+.modal-content button {
+  background-color: #ffcc00;
+  color: #cf3834;
 }

@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { Container, Card, Badge, Button, Collapse } from 'react-bootstrap'
 import ReactMarkdown from 'react-markdown'
 import './TestJob.css'
-import { Modal, Avatar, IconButton, CardMedia, CardHeader, CardContent, Typography, CardActions } from "@material-ui/core";
-import ShareIcon from '@material-ui/icons/Share';
-import { Dialog, DialogTitle, DialogContent, makeStyles } from '@material-ui/core';
+import { Avatar, IconButton, CardHeader, CardContent, Typography } from "@material-ui/core";
+import { Dialog, DialogTitle, DialogContent } from '@material-ui/core';
 import { Grid } from "@material-ui/core";
 import CloseIcon from '@material-ui/icons/Close';
+
 
 
 export default function Job({ job }) {
@@ -35,8 +35,13 @@ export default function Job({ job }) {
 
 
 
-    <Dialog open={open} maxWidth="md">
-    <Container>
+    <Dialog open={open} maxWidth="md"   style={{backgroundColor: 'transparent'}} PaperProps={{
+    style: {
+      backgroundColor: '#404040',
+      boxShadow: 'none',
+      color: "white",
+    }}}>
+   
             <DialogTitle>
               
                 <div style={{ display: 'flex' }}>
@@ -57,9 +62,8 @@ export default function Job({ job }) {
             <ReactMarkdown source={job.description} />
           </div>
             </DialogContent>
-            </Container>
-        </Dialog>
-
+            
+</Dialog>
 
   </Card>
   </Grid>

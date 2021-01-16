@@ -1,50 +1,50 @@
-import navigator from 'navigator-js'
-      function displayLocation(latitude,longitude){
-        var request = new XMLHttpRequest();
+function getCoordintes() { 
+  var options = { 
+      enableHighAccuracy: true, 
+      timeout: 5000, 
+      maximumAge: 0 
+  }; 
 
-        var method = 'GET';
-        var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+latitude+','+longitude+'&sensor=true';
-        var async = true;
+  function success(pos) { 
+      var crd = pos.coords; 
+      var lat = crd.latitude.toString(); 
+      var lng = crd.longitude.toString(); 
+      var coordinates = [lat, lng]; 
+      console.log(`Latitude: ${lat}, Longitude: ${lng}`); 
+      document.getElementById("ss").value=`Latitude: ${lat}, Longitude: ${lng}`
+      getCity(coordinates); 
+      return ; 
 
-        request.open(method, url, async);
-        request.onreadystatechange = function(){
-          if(request.readyState == 4 && request.status == 200){
-            var data = JSON.parse(request.responseText);
-            var address = data.results[0];
-            document.write(address.formatted_address);
-          }
-        };
-        request.send();
-      };
+  } 
 
-      var successCallback = function(position){
-        var x = position.coords.latitude;
-        var y = position.coords.longitude;
-        displayLocation(x,y);
-      };
+  function error(err) { 
+      console.warn(`ERROR(${err.code}): ${err.message}`); 
+  } 
 
-      var errorCallback = function(error){
-        var errorMessage = 'Unknown error';
-        switch(error.code) {
-          case 1:
-            errorMessage = 'Permission denied';
-            break;
-          case 2:
-            errorMessage = 'Position unavailable';
-            break;
-          case 3:
-            errorMessage = 'Timeout';
-            break;
-        }
-        document.write(errorMessage);
-      };
+  navigator.geolocation.getCurrentPosition(success, error, options); 
+} 
 
-      var options = {
-        enableHighAccuracy: true,
-        timeout: 1000,
-        maximumAge: 0
-      };
 
-      navigator.geolocation.getCurrentPosition(successCallback,errorCallback,options);
- 
-      console.log(address)
+// Step 2: Get city name 
+function getCity(coordinates) { 
+  var xhr = new XMLHttpRequest(); 
+  var lat = coordinates[0]; 
+  var lng = coordinates[1]; 
+
+  // Paste your LocationIQ token below. 
+  xhr.open('GET', " https://us1.locationiq.com/v1/reverse.php?key=pk.28505c1b21facbcb055691bd11f5ce99&lat=" + 
+  lat + "&lon=" + lng + "&format=json", true); 
+  xhr.send(); 
+  xhr.onreadystatechange = processRequest; 
+  xhr.addEventListener("readystatechange", processRequest, false); 
+
+  function processRequest(e) { 
+      if (xhr.readyState === 4 && xhr.status === 200) { 
+          var response = JSON.parse(xhr.responseText); 
+          // city = response.address.city; 
+          document.getElementById("ss").value=response.address.state
+          console.log(response.address.state); 
+          return; 
+      } 
+  } 
+} 
