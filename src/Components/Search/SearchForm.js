@@ -62,11 +62,11 @@ export default function SearchForm({ params, onParamChange }) {
     <div className="form">
     <Form className="mt-4">
       <Form.Row className="align-items-end">
-        <Form.Group className="col-6" as={Col}>
+        <Form.Group className="col-" as={Col}>
           <Form.Control onChange={onParamChange} value={params.title} name="description" type="text" placeholder="Search"/>
         </Form.Group>
         <Form.Group as={Col}>
-          <div className="d-flex">
+          <div>
           <Form.Control id="ss" onChange={onParamChange} value={params.location} name="location" type="text" placeholder="Location"/>
           </div>
         </Form.Group>
@@ -80,10 +80,10 @@ export default function SearchForm({ params, onParamChange }) {
           {/* <Form.Check onChange={onParamChange} value={params.full_time} name="full_time" id="full-time" label="Only Full Time" type="checkbox" className="mb-2" /> */}
 
           <FormControlLabel className="mb-2"
-    control={<Switch checked={params.full_time} onChange={onParamChange} />}
+    control={<Switch checked={params.full_time} onChange={onParamChange} value={params.location} />}
     label="Fulltime"
   />
-  <Button variant="secondary" onClick={onParamChange}>Search</Button>
+  <Button variant="secondary" onClick={onParamChange} value={params.location}>Search</Button>
         </Form.Group>
         
       </Form.Row>
