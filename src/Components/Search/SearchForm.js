@@ -62,7 +62,7 @@ export default function SearchForm({ params, onParamChange }) {
     <div className="form">
     <Form className="mt-4">
       <Form.Row className="align-items-end">
-        <Form.Group className="col-" as={Col}>
+        <Form.Group className="col-7" as={Col}>
           <Form.Control onChange={onParamChange} value={params.title} name="description" type="text" placeholder="Search"/>
         </Form.Group>
         <Form.Group as={Col}>

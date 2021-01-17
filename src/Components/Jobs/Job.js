@@ -11,15 +11,17 @@ import CloseIcon from '@material-ui/icons/Close';
 
 export default function Job({ job }) {
   const [open, setOpen] = useState(false)
+  const [hide, setHide] = useState(false)
 
     return (
+      
       <Grid item xs={12} sm={6} md={4}>
-          <Card onClick={() => setOpen(prevOpen => !prevOpen)}>
-    <CardHeader
-      avatar={<Avatar className= "logo" src={job.company_logo} />}
-      action={
+          <Card className="hover" onClick={() => setOpen(prevOpen => !prevOpen)}>
+          
+          <CardHeader
+          avatar={<Avatar className= "logo" src={job.company_logo} />}
+          action={
         <IconButton aria-label="settings">
-
         </IconButton>
       }
       title={job.title}
@@ -35,7 +37,7 @@ export default function Job({ job }) {
 
 
 
-    <Dialog open={open} maxWidth="md"   style={{backgroundColor: 'transparent'}} PaperProps={{
+    <Dialog open={open} maxWidth="md" style={{backgroundColor: 'transparent'}} PaperProps={{
     style: {
       backgroundColor: '#404040',
       boxShadow: 'none',
@@ -45,7 +47,7 @@ export default function Job({ job }) {
             <DialogTitle>
               
                 <div style={{ display: 'flex' }}>
-                    <Typography variant="h6" component="div" style={{ flexGrow: 1 }}>
+                    <Typography class="font-weight-light" component="div" style={{ flexGrow: 1 }}>
                       <div display="d-flex">
                     {job.title}-<span>{job.company}</span>
                     </div>
@@ -57,7 +59,12 @@ export default function Job({ job }) {
                     </Button>
                 </div>
             </DialogTitle>
-            <DialogContent dividers>
+            <DialogContent dividers><DialogContent dividers>
+            <Container variant="secondary"className="innerCard">
+              <h3 class="font-weight-light">How to Apply</h3>
+              {job.how_to_apply}
+            </Container>
+            </DialogContent>
             <div className="mt-4">
             <ReactMarkdown source={job.description} />
           </div>

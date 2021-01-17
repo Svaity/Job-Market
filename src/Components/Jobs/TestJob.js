@@ -40,12 +40,13 @@ const [open, setOpen] = useState(false)
       </CardActions>
     </Card>
 
-
-    <Dialog open={open} maxWidth="md"  style={{backgroundColor: 'transparent'}}  PaperProps={{
+    <Dialog open={open} maxWidth="md" style={{backgroundColor: 'transparent'}} PaperProps={{
     style: {
-      backgroundColor: 'pink',
+      backgroundColor: '#404040',
       boxShadow: 'none',
+      color: "white",
     }}}>
+   
             <DialogTitle>
               
                 <div style={{ display: 'flex' }} >
@@ -62,6 +63,14 @@ const [open, setOpen] = useState(false)
                 </div>
             </DialogTitle>
             <DialogContent dividers>
+            <Container class="rounded">
+              <h3 className="mt-3 mb-3">How to Apply</h3>
+              <div className="mb-4">
+
+              
+              <p>"asdfbkasdfj asdkjfkjsadf "</p>
+              </div>
+            </Container>
             <div className="mt-4">
             <ReactMarkdown source={description} />
           </div>

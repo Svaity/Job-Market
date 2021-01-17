@@ -35,7 +35,7 @@ function Navbar() {
             <div className = "headerRight">
             <Collapse in={open}>
                 <div className="bio mt-2">
-                    <p>Developed with ❤️ by <a href="https://github.com/Svaity">S Vaity</a> </p>
+                    <p>. made with ❤️ by <a href="https://github.com/Svaity">SVaity</a> </p>
                 </div>
         </Collapse>               
                 <IconButton onClick={() => setOpen(prevOpen => !prevOpen)}>
