@@ -32,13 +32,15 @@ These are the technologies used:
 <details>
   <summary>Web</summary>
 
+
 -   [React](https://pt-br.reactjs.org/)
 -   [Styled Components](https://styled-components.com/)
 -   [Material-UI/core](https://material-ui.com/pt/)
 -   [Material-UI/icons](https://material-ui.com/pt/components/material-icons/#material-icons)
-- [Github Jobs API](https://github.com/joshwcomeau/react-flip-move)
-- [Locatio IQ](https://firebase.google.com/)
--   [DarkMode JS](https://code.visualstudio.com/)
+- [Github Jobs API](https://jobs.github.com/api)
+- [Locatio IQ](https://locationiq.com/)
+-   [DarkMode JS](https://darkmodejs.learn.uno/)
+
 
 </details>
 
